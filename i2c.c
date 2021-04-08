@@ -71,11 +71,6 @@ static unsigned int read_word_data(unsigned char addr,unsigned char reg) {
   return rc;
 }
 
-
-static void frequencyStep(int pos) {
-  vfo_step(pos);
-}
-
 void i2c_interrupt() {
   unsigned int flags;
   unsigned int ints;
