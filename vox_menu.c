@@ -41,10 +41,6 @@ static GtkWidget *level;
 static GtkWidget *led;
 static GdkRGBA led_color={0.0,0.0,0.0,1.0};
 
-static GdkRGBA white={1.0,1.0,1.0,1.0};
-static GdkRGBA red={1.0,0.0,0.0,1.0};
-static GdkRGBA green={0.0,1.0,0.1,1.0};
-
 static GThread *level_thread_id;
 static int run_level=0;
 static double peak=0.0;
@@ -154,8 +150,6 @@ void vox_menu(GtkWidget *parent) {
   //gtk_window_set_decorated(GTK_WINDOW(dialog),FALSE);
   gtk_window_set_title(GTK_WINDOW(dialog),"piHPSDR - VOX");
   g_signal_connect (dialog, "delete_event", G_CALLBACK (delete_event), NULL);
-
-  gtk_widget_override_background_color(dialog,GTK_STATE_FLAG_NORMAL,&white);
 
   GtkWidget *content=gtk_dialog_get_content_area(GTK_DIALOG(dialog));
 
