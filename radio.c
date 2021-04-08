@@ -667,8 +667,9 @@ g_print("create_visual: calling radio_change_receivers: receivers=%d r=%d\n",rec
 void start_radio() {
   int i;
   int y;
+  GdkDisplay *defaultDisplay = gdk_display_get_default();
 //g_print("start_radio: selected radio=%p device=%d\n",radio,radio->device);
-  gdk_window_set_cursor(gtk_widget_get_window(top_window),gdk_cursor_new(GDK_WATCH));
+  gdk_window_set_cursor(gtk_widget_get_window(top_window),gdk_cursor_new_for_display(defaultDisplay, GDK_WATCH));
 
   int rc;
 
@@ -1262,7 +1263,7 @@ void start_radio() {
 
   g_idle_add(ext_vfo_update,(gpointer)NULL);
 
-  gdk_window_set_cursor(gtk_widget_get_window(top_window),gdk_cursor_new(GDK_ARROW));
+  gdk_window_set_cursor(gtk_widget_get_window(top_window), gdk_cursor_new_for_display(defaultDisplay, GDK_ARROW));
 
   //
   // MIDIstartup must not be called before the radio is completely set up, since
