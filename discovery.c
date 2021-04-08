@@ -364,7 +364,8 @@ void discovery() {
   status_text("Discovery");
   
     fprintf(stderr,"discovery: found %d devices\n", devices);
-    gdk_window_set_cursor(gtk_widget_get_window(top_window),gdk_cursor_new(GDK_ARROW));
+    GdkDisplay *defaultDisplay = gdk_display_get_default();
+    gdk_window_set_cursor(gtk_widget_get_window(top_window),gdk_cursor_new_for_display(defaultDisplay, GDK_ARROW));
 
     discovery_dialog = gtk_dialog_new();
     gtk_window_set_transient_for(GTK_WINDOW(discovery_dialog),GTK_WINDOW(top_window));
