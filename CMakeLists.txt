@@ -124,68 +124,75 @@ SET(WDSP_SRCS
     wdsp/wisdom.c
 )
 
+set(WINDOW_SRCS
+window/meter.c
+window/rx_panadapter.c
+window/tx_panadapter.c
+window/zoompan.c
+window/vfo.c
+window/waterfall.c
+window/sliders.c
+window/toolbar.c
+)
+
+SET(DIALOG_SRCS
+dialogs/new_menu.c
+dialogs/about_menu.c
+dialogs/exit_menu.c
+dialogs/radio_menu.c
+dialogs/rx_menu.c
+dialogs/ant_menu.c
+dialogs/display_menu.c
+dialogs/dsp_menu.c
+dialogs/pa_menu.c
+dialogs/cw_menu.c
+dialogs/oc_menu.c
+dialogs/xvtr_menu.c
+dialogs/equalizer_menu.c
+dialogs/step_menu.c
+dialogs/meter_menu.c
+dialogs/band_menu.c
+dialogs/bandstack_menu.c
+dialogs/mode_menu.c
+dialogs/filter_menu.c
+dialogs/noise_menu.c
+dialogs/agc_menu.c
+dialogs/vox_menu.c
+dialogs/fft_menu.c
+dialogs/diversity_menu.c
+dialogs/tx_menu.c
+dialogs/vfo_menu.c
+dialogs/test_menu.c
+dialogs/rigctl_menu.c
+dialogs/store_menu.c
+)
 add_executable(pihpsdr
     ${WDSP_SRCS}
     ${SOAPY_SOURCES}
+    ${WINDOW_SRCS}
+    ${DIALOG_SRCS}
     audio.c
     band.c
     discovered.c
     discovery.c
     filter.c
     main.c
-    new_menu.c
-    about_menu.c
-    exit_menu.c
-    radio_menu.c
-    rx_menu.c
-    ant_menu.c
-    display_menu.c
-    dsp_menu.c
-    pa_menu.c
-    cw_menu.c
-    oc_menu.c
-    xvtr_menu.c
-    equalizer_menu.c
-    step_menu.c
-    meter_menu.c
-    band_menu.c
-    bandstack_menu.c
-    mode_menu.c
-    filter_menu.c
-    noise_menu.c
-    agc_menu.c
-    vox_menu.c
-    fft_menu.c
-    diversity_menu.c
-    tx_menu.c
-    vfo_menu.c
-    test_menu.c
-    meter.c
     mode.c
     old_discovery.c
     new_discovery.c
     old_protocol.c
     new_protocol.c
     new_protocol_programmer.c
-    rx_panadapter.c
-    tx_panadapter.c
     property.c
     radio.c
     receiver.c
     rigctl.c
-    rigctl_menu.c
-    toolbar.c
     transmitter.c
-    zoompan.c
-    sliders.c
     version.c
-    vfo.c
-    waterfall.c
     button_text.c
     vox.c
     update.c
     store.c
-    store_menu.c
     memory.c
     led.c
     ext.c
@@ -196,6 +203,8 @@ add_executable(pihpsdr
 include_directories(${LIBFFTW_INCLUDE_DIRS})
 include_directories(${LIBGTK_INCLUDE_DIRS})
 include_directories("${CMAKE_SOURCE_DIR}")
+include_directories("${CMAKE_SOURCE_DIR}/window")
+include_directories("${CMAKE_SOURCE_DIR}/dialogs")
 include_directories("${CMAKE_SOURCE_DIR}/wdsp")
 
 #add_definitions(-DCLIENT_SERVER)
@@ -215,6 +224,6 @@ target_link_libraries(pihpsdr PUBLIC ${LIBALSA_LIBRARIES})
 target_link_libraries(pihpsdr PUBLIC m)
 target_link_libraries(pihpsdr PUBLIC pthread)
 
-add_executable(hpsdrsim hpsdrsim.c newhpsdrsim.c)
+add_executable(hpsdrsim simulator/hpsdrsim.c simulator/newhpsdrsim.c)
 target_link_libraries(hpsdrsim PUBLIC m)
 target_link_libraries(hpsdrsim PUBLIC pthread)
