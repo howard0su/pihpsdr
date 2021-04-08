@@ -234,7 +234,9 @@ static gboolean emp_cb (GtkWidget *widget, gpointer data) {
 }
 
 static void tune_value_changed_cb(GtkWidget *widget, gpointer data) {
+#ifdef GPIO
   setTuneDrive(gtk_range_get_value(GTK_RANGE(tune_scale)));
+#endif
 }
 
 void tx_menu(GtkWidget *parent) {

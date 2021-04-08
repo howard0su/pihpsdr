@@ -1,0 +1,3 @@
+[submodule "wdsp"]
+	path = wdsp
+	url = https://github.com/howard0su/wdsp.git

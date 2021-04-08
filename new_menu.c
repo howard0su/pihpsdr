@@ -186,13 +186,18 @@ static gboolean rigctl_cb (GtkWidget *widget, GdkEventButton *event, gpointer da
 
 static gboolean encoder_cb (GtkWidget *widget, GdkEventButton *event, gpointer data) {
   cleanup();
+
+#ifdef GPIO
   encoder_menu(top_window);
+#endif
   return TRUE;
 }
 
 static gboolean switch_cb (GtkWidget *widget, GdkEventButton *event, gpointer data) {
   cleanup();
+#ifdef GPIO
   switch_menu(top_window);
+#endif
   return TRUE;
 }
 
