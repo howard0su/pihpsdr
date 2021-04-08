@@ -67,13 +67,6 @@ void step_menu(GtkWidget *parent) {
   gtk_window_set_title(GTK_WINDOW(dialog),"piHPSDR - VFO Step");
   g_signal_connect (dialog, "delete_event", G_CALLBACK (delete_event), NULL);
 
-  GdkRGBA color;
-  color.red = 1.0;
-  color.green = 1.0;
-  color.blue = 1.0;
-  color.alpha = 1.0;
-  gtk_widget_override_background_color(dialog,GTK_STATE_FLAG_NORMAL,&color);
-
   GtkWidget *content=gtk_dialog_get_content_area(GTK_DIALOG(dialog));
 
   GtkWidget *grid=gtk_grid_new();
@@ -93,7 +86,7 @@ void step_menu(GtkWidget *parent) {
     } else {
       step_rb=gtk_radio_button_new_with_label_from_widget(GTK_RADIO_BUTTON(step_rb),step_labels[i]);
     }
-    gtk_widget_override_font(step_rb, pango_font_description_from_string("Sans 16"));
+    //gtk_widget_override_font(step_rb, pango_font_description_from_string("Sans 16"));
     gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (step_rb), steps[i]==step);
     gtk_widget_show(step_rb);
     gtk_grid_attach(GTK_GRID(grid),step_rb,i%5,1+(i/5),1,1);
